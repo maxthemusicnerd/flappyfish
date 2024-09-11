@@ -15,6 +15,7 @@ function getRandomInt(min, max) {
 
 let gameStart = false;
 let is_alive = true;
+let score_counter = 0;
 
 const fish = new Image();
 fish.src = "images/bird3.png";
@@ -69,7 +70,8 @@ function handler() {
                     storedArray[0] = moverX;
                     coordinates[i] = storedArray;
                 } else {
-                    coordinates.splice(i, 1)
+                    coordinates.splice(i, 1);
+                    score_counter += 1;
                 }
             }
         })
@@ -115,7 +117,8 @@ function death() {
         setTimeout(ctx.drawImage(fish, x, y), 4000);
         is_alive = true;
         gameStart = false;
-        alert("For shame...")
+        alert("For shame...  Score: " + score_counter)
+        score_counter = 0
     }
 }
 
